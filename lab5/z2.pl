@@ -40,3 +40,5 @@ test_dfs(L, N, M, Moves) :-
     L < M,
     State = st(L,N,N,M,0),
     solve_dfs(State, [State], Moves).
+
+test_dfs(_,_,_,_).

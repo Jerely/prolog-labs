@@ -12,6 +12,8 @@ test_dfs(Problem, Moves) :-
     initial_state(Problem, State),
     solve_dfs(State, [State], Moves).
 
+test_dfs(_,_).
+
 initial_state('Исходное состояние: все находятся на левом берегу.', wgc('Лодка на левом берегу.', ['Волк','Коза','Капуста'],[])).
 final_state(wgc('Лодка на правом берегу.', [], ['Волк', 'Коза', 'Капуста'])).
 
@@ -25,7 +27,7 @@ move(wgc(_,_,_), 'Без груза').
 
 update(wgc(B,L,R),Cargo,wgc(B1,L1,R1)) :-
     update_boat(B,B1),
-    update_banks(Cargo,B,L,R,L1,R1).
+    update_banks(Cargo,B,L,R,L1,R1),!.
 
 update_boat('Лодка на левом берегу.', 'Лодка на правом берегу.').
 update_boat('Лодка на правом берегу.', 'Лодка на левом берегу.').
